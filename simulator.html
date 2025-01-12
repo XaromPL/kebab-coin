@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Exchange Simulator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- Tło z particles.js -->
+    <div id="particles-js" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;"></div>
+    
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="simulator.html">Simulator</a></li>
+            <li><a href="info.html">Information</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <div class="chart-container">
+            <h1>Crypto Exchange Simulator</h1>
+            <canvas id="cryptoChart"></canvas>
+            <div class="info">
+                <p id="budget">Budget: $10000</p>
+                <div class="buttons">
+                    <button id="buyBtn">Buy</button>
+                    <button id="sellBtn">Sell</button>
+                </div>
+            </div>
+            <div id="actionLog" class="action-log">
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script src="particles.js"></script> 
+</html>
