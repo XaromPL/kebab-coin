@@ -1,4 +1,3 @@
-// Initialize the chart with Chart.js
 const ctx = document.getElementById('cryptoChart').getContext('2d');
 let currentPrice = 5000; // Initial value
 let priceData = [];
