@@ -1,17 +1,15 @@
-/* General styles */
 body {
     font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #1e1e1e; /* Dark background */
-    color: #f5f5f5; /* Light text for contrast */
+    background-color: #1e1e1e;
+    color: #f5f5f5;
     overflow: auto;
     height: 100%;
 }
 
-/* Navigation bar */
 .navbar {
-    background: linear-gradient(to right, #303031, #455a64); /* Lighter blue/gray gradient */
+    background: linear-gradient(to right, #303031, #455a64); 
     color: #f5f5f5;
     padding: 15px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -25,8 +23,8 @@ body {
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center; /* Vertically center the items */
-    height: 100%; /* Make sure the navbar's ul takes up the full height */
+    align-items: center; 
+    height: 100%;
 }
 
 .navbar ul li {
@@ -37,51 +35,74 @@ body {
     color: #f5f5f5;
     text-decoration: none;
     font-size: 18px;
-    padding: 15px 20px;  /* Add padding to make the link block-like */
-    display: block;  /* Ensure the link is treated as a block element */
+    padding: 15px 20px;
+    display: block;  
     transition: background 0.3s ease, transform 0.3s ease;
-    border-radius: 5px;  /* Rounded corners */
-    height: 100%;  /* Make the link take up full height */
+    border-radius: 5px;
+    height: 100%;
 }
 
 .navbar ul li a:hover {
-    background: linear-gradient(to right, #0288d1, #039be5); /* Blue gradient background */
-    color: white;  /* White text color on hover */
-    transform: scale(1.1); /* Slightly larger on hover */
+    background: linear-gradient(to right, #0288d1, #039be5);
+    color: white;
+    transform: scale(1.1);
 }
 
-/* Main content area */
 main {
     padding: 20px;
     z-index: 3;
-    position: relative; /* Ensures main content is above the background */
+    position: relative;
 }
 
-/* Chart container */
 .chart-container {
     text-align: center;
     margin: 30px auto;
     padding: 30px;
     width: 70%;
-    background: #202020; /* Lighter background for the chart container */
+    background: #202020;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
     border-radius: 10px;
     border: 1px solid #666;
 }
 
-/* Buttons */
-.buttons {
-    margin-top: 20px;
+.selection-container {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 15px;
+}
+
+.crypto-selection, .amount-input {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.crypto-selection label, .amount-input label {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.crypto-selection select, .amount-input input {
+    font-size: 16px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: #f5f5f5;
+}
+
+.buttons {
+    margin-left: auto; 
+    display: flex;
+    gap: 15px;
 }
 
 button {
-    background: linear-gradient(to right, #0288d1, #039be5); /* Lighter blue gradient button */
+    background: linear-gradient(to right, #0288d1, #039be5);
     color: white;
     border: none;
-    padding: 12px 25px;
-    margin: 10px;
+    padding: 16px 50px; 
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
@@ -89,21 +110,19 @@ button {
 }
 
 button:hover {
-    background: linear-gradient(to right, #039be5, #0288d1); /* Inverted gradient on hover */
+    background: linear-gradient(to right, #039be5, #0288d1);
     transform: scale(1.05);
 }
 
-/* Footer */
 footer {
     text-align: center;
     padding: 15px 0;
-    background-color: #607d8b; /* Lighter footer background */
+    background-color: #607d8b;
     color: white;
     margin-top: 30px;
     font-size: 14px;
 }
 
-/* Action log console */
 .action-log {
     background: #333;
     border: 1px solid #444;
@@ -113,14 +132,13 @@ footer {
     overflow-y: auto;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
-    color: #bbb; /* Light gray color for logs */
+    color: #bbb;
 }
 
-/* Budget display */
 .info {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -128,20 +146,82 @@ footer {
     font-size: 18px;
     font-weight: bold;
     margin: 0;
+    margin-bottom: 10px;
 }
 
-.buttons {
-    display: flex;
-    gap: 15px;
-}
-
-/* Background - particles.js */
 #particles-js {
-    position: fixed; /* Ensures the particles are fixed in the background */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 1; /* Sets the background below the rest of the content */
-    pointer-events: none; /* Disables interaction with the background */
+    z-index: 1;
+    pointer-events: none;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+    }
+
+    .navbar ul li {
+        margin-bottom: 15px;
+    }
+
+    .navbar ul li a {
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .chart-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .info p {
+        font-size: 16px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar ul li {
+        margin-right: 10px;
+    }
+
+    .navbar ul li a {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+
+    .chart-container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .info p {
+        font-size: 14px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px 15px;
+    }
+
+    footer {
+        font-size: 10px;
+    }
 }

@@ -1,86 +1,129 @@
-const ctx = document.getElementById('cryptoChart').getContext('2d');
-let currentPrice = 5000; // Initial value
+// Global variables 
+let currentPrice = 5500;
+let bigosPrice = 1500;
+let pierogPrice = 3000;
 let priceData = [];
+let bigosData = [];
+let pierogData = [];
 let labels = [];
-let budget = 10000; // Initial budget
-let cryptoOwned = 0; // Amount of cryptocurrency owned
-let increasePrice = false; // Flag to control price increase after purchase
-let decreasePrice = false; // Flag to control price decrease after sale
-let startTime = Date.now(); // Variable to track time
+let budget = 10000;
+let cryptoOwned = 0;
+let bigosOwned = 0;
+let pierogOwned = 0;
+let startTime = Date.now();
 
-// Populate the initial 10 data points
-for (let i = 0; i < 10; i++) {
-    const randomChange = (Math.random() - 0.5) * 200; // Random price change
-    currentPrice = Math.max(1000, currentPrice + randomChange); // Ensure price >= 1000
+// Initial chart setup 
+for (let i = 0; i < 20; i++) {
+    const randomChange = (Math.random() - 0.5) * 200;
+    currentPrice = Math.max(1000, currentPrice + randomChange);
+    bigosPrice = Math.max(1000, bigosPrice + randomChange);
+    pierogPrice = Math.max(1000, pierogPrice + randomChange);
     priceData.push(currentPrice);
-    labels.push(i); // Use the index as the label for now
+    bigosData.push(bigosPrice);
+    pierogData.push(pierogPrice);
+    labels.push(i);
 }
 
-// Chart
+// Functions to update chart
+const ctx = document.getElementById('cryptoChart').getContext('2d');
 const cryptoChart = new Chart(ctx, {
     type: 'line',
     data: {
         labels: labels,
-        datasets: [{
-            label: 'Kebab-Coin (USD)',
-            data: priceData,
-            borderColor: '#3498db',
-            borderWidth: 2,
-            fill: false,
-        }]
+        datasets: [
+            {
+                label: 'Kebab-Coin (USD)',
+                data: priceData,
+                borderColor: '#3498db',
+                borderWidth: 2,
+                fill: false,
+            },
+            {
+                label: 'Bigos-Coin (USD)',
+                data: bigosData,
+                borderColor: '#e74c3c',
+                borderWidth: 2,
+                fill: false,
+            },
+            {
+                label: 'Pierog-Coin (USD)',
+                data: pierogData,
+                borderColor: '#2ecc71',
+                borderWidth: 2,
+                fill: false,
+            },
+        ],
     },
     options: {
         scales: {
             x: {
-                title: { display: true, text: 'Time (s)' }
+                title: { display: true, text: 'Time (s)' },
             },
             y: {
                 title: { display: true, text: 'Price (USD)' },
                 beginAtZero: false,
-                min: 1000, // Initial price >= 1000
-                max: 7000, // Price does not exceed 7000
-            }
-        }
-    }
+                min: 0,
+                max: 10000,
+            },
+        },
+    },
 });
 
-// Function to update the chart
-function updateChart() {
-    cryptoChart.update();
-}
-
-// Function to simulate price change
-function changePrice() {
-    let randomChange = (Math.random() - 0.5) * 200; // Random price change in a larger range
-    if (increasePrice) {
-        randomChange = Math.abs(randomChange) * 1.5; // Increase price more dynamically
-        increasePrice = false; // Stop increase after one iteration
-    }
-    if (decreasePrice) {
-        randomChange = -Math.abs(randomChange) * 1.5; // Decrease price more dynamically
-        decreasePrice = false; // Stop decrease after one iteration
-    }
-
-    currentPrice = Math.max(1000, currentPrice + randomChange); // Price >= 1000
+// Functions to change prices 
+function changePriceKebab() {
+    const randomChange = (Math.random() - 0.5) * 750;
+    currentPrice = Math.max(1000, currentPrice + randomChange);
     priceData.push(currentPrice);
 
-    // Update X-axis labels
     let currentTime = Math.floor((Date.now() - startTime) / 1000);
     labels.push(currentTime);
 
-    // Limit the length of data on the chart
-    if (priceData.length > 10) {
+    if (priceData.length > 20) {
         priceData.shift();
         labels.shift();
     }
 
-    updateChart();
+    cryptoChart.update();
 }
 
-// Change price every 2 seconds
-setInterval(changePrice, 2000);
+function changePriceBigos() {
+    const randomChange = (Math.random() - 0.5) * 250;
+    bigosPrice = Math.max(1000, bigosPrice + randomChange);
+    bigosData.push(bigosPrice);
 
-// Function to display action logs
+    let currentTime = Math.floor((Date.now() - startTime) / 1000);
+    labels.push(currentTime);
+
+    if (bigosData.length > 20) {
+        bigosData.shift();
+        labels.shift();
+    }
+
+    cryptoChart.update();
+}
+
+function changePricePierog() {
+    const randomChange = (Math.random() - 0.5) * 100;
+    pierogPrice = Math.max(1000, pierogPrice + randomChange);
+    pierogData.push(pierogPrice);
+
+    let currentTime = Math.floor((Date.now() - startTime) / 1000);
+    labels.push(currentTime);
+
+    if (pierogData.length > 20) {
+        pierogData.shift();
+        labels.shift();
+    }
+
+    cryptoChart.update();
+}
+
+// Update prices every 5 seconds
+setInterval(changePriceKebab, 5000);
+setInterval(changePriceBigos, 5000);
+setInterval(changePricePierog, 5000);
+
+// Function to display logs
 function updateActionLog(message) {
     const logContainer = document.getElementById('actionLog');
     const logMessage = document.createElement('p');
@@ -91,51 +134,108 @@ function updateActionLog(message) {
     }
 }
 
-// Buy/Sell button handlers
+// Handling the Buy button
 document.getElementById('buyBtn').addEventListener('click', () => {
-    const amountToBuy = parseFloat(prompt(`You have $${budget.toFixed(2)}.\nHow many Kebab-Coin would you like to buy at $${currentPrice.toFixed(2)} per coin?`));
-    if (isNaN(amountToBuy) || amountToBuy <= 0) {
+    const currency = document.getElementById('cryptoList').value;
+    const amount = parseFloat(document.getElementById('amount').value);
+
+    if (isNaN(amount) || amount <= 0) {
         alert('Invalid amount.');
         return;
     }
 
-    const totalCost = amountToBuy * currentPrice;
+    let price;
+    let owned;
+    let currencyName;
+
+    switch (currency) {
+        case 'kebab-coin':
+            price = currentPrice;
+            owned = cryptoOwned;
+            currencyName = 'Kebab-Coin';
+            break;
+        case 'bigos-coin':
+            price = bigosPrice;
+            owned = bigosOwned;
+            currencyName = 'Bigos-Coin';
+            break;
+        case 'pierog-coin':
+            price = pierogPrice;
+            owned = pierogOwned;
+            currencyName = 'Pierog-Coin';
+            break;
+    }
+
+    const totalCost = amount * price;
+
     if (totalCost > budget) {
         alert(`You don't have enough money. Your budget is $${budget.toFixed(2)}.`);
         return;
     }
 
     budget -= totalCost;
-    cryptoOwned += amountToBuy;
-    increasePrice = true; // Trigger price increase after purchase
-    updateActionLog(`Bought ${amountToBuy} Kebab-Coin for $${totalCost.toFixed(2)}. Remaining budget: $${budget.toFixed(2)}`);
+
+    if (currency === 'kebab-coin') cryptoOwned += amount;
+    if (currency === 'bigos-coin') bigosOwned += amount;
+    if (currency === 'pierog-coin') pierogOwned += amount;
+
+    updateActionLog(`Bought ${amount} ${currencyName} for $${totalCost.toFixed(2)}. Remaining budget: $${budget.toFixed(2)}`);
     updateBudgetDisplay();
 });
 
+// Handling the Sell button
 document.getElementById('sellBtn').addEventListener('click', () => {
-    if (cryptoOwned === 0) {
-        alert('You don\'t own any Kebab-Coin to sell.');
+    const currency = document.getElementById('cryptoList').value;
+    const amount = parseFloat(document.getElementById('amount').value);
+
+    if (isNaN(amount) || amount <= 0) {
+        logToConsole('Invalid amount.'); 
         return;
     }
 
-    const amountToSell = parseFloat(prompt(`You own ${cryptoOwned.toFixed(2)} Kebab-Coin.\nHow many coins would you like to sell at $${currentPrice.toFixed(2)} per coin?`));
-    if (isNaN(amountToSell) || amountToSell <= 0 || amountToSell > cryptoOwned) {
-        alert('Invalid amount.');
+    let price;
+    let owned;
+    let currencyName;
+
+    switch (currency) {
+        case 'kebab-coin':
+            price = currentPrice;
+            owned = cryptoOwned;
+            currencyName = 'Kebab-Coin';
+            break;
+        case 'bigos-coin':
+            price = bigosPrice;
+            owned = bigosOwned;
+            currencyName = 'Bigos-Coin';
+            break;
+        case 'pierog-coin':
+            price = pierogPrice;
+            owned = pierogOwned;
+            currencyName = 'Pierog-Coin';
+            break;
+    }
+
+    if (amount > owned) {
+        logToConsole(`You don't own enough ${currencyName} to sell.`);
         return;
     }
 
-    const totalRevenue = amountToSell * currentPrice;
+    const totalRevenue = amount * price;
+
     budget += totalRevenue;
-    cryptoOwned -= amountToSell;
-    decreasePrice = true; // Trigger price decrease after sale
-    updateActionLog(`Sold ${amountToSell} Kebab-Coin for $${totalRevenue.toFixed(2)}. Remaining budget: $${budget.toFixed(2)}`);
+
+    if (currency === 'kebab-coin') cryptoOwned -= amount;
+    if (currency === 'bigos-coin') bigosOwned -= amount;
+    if (currency === 'pierog-coin') pierogOwned -= amount;
+
+    updateActionLog(`Sold ${amount} ${currencyName} for $${totalRevenue.toFixed(2)}. Remaining budget: $${budget.toFixed(2)}`);
     updateBudgetDisplay();
 });
 
-// Function to display the current budget and amount of cryptocurrency
+// Function to update the budget display
 function updateBudgetDisplay() {
-    document.getElementById('budget').textContent = `Budget: $${budget.toFixed(2)} | Crypto Owned: ${cryptoOwned.toFixed(2)}`;
+    document.getElementById('budget').textContent = `Budget: $${budget.toFixed(2)} | Kebab-Coin: ${cryptoOwned.toFixed(2)} | Bigos-Coin: ${bigosOwned.toFixed(2)} | Pierog-Coin: ${pierogOwned.toFixed(2)}`;
 }
 
-// Initial chart update
-updateChart();
+// Initialization
+updateBudgetDisplay();

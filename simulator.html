@@ -10,7 +10,6 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
 </head>
 <body>
-    <!-- Tło z particles.js -->
     <div id="particles-js" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1;"></div>
     
     <nav class="navbar">
@@ -28,16 +27,30 @@
             <canvas id="cryptoChart"></canvas>
             <div class="info">
                 <p id="budget">Budget: $10000</p>
-                <div class="buttons">
-                    <button id="buyBtn">Buy</button>
-                    <button id="sellBtn">Sell</button>
+                <div class="selection-container">
+                    <div class="crypto-selection">
+                        <label for="cryptoList">Select Cryptocurrency:</label>
+                        <select id="cryptoList">
+                            <option value="kebab-coin">Kebab-Coin</option>
+                            <option value="bigos-coin">Bigos-Coin</option>
+                            <option value="pierog-coin">Pierog-Coin</option>
+                        </select>
+                    </div>
+                    <div class="amount-input">
+                        <label for="amount">Amount:</label>
+                        <input type="number" id="amount" min="0" step="1">
+                    </div>
+                    <div class="buttons">
+                        <button id="buyBtn">Buy</button>
+                        <button id="sellBtn">Sell</button>
+                    </div>
                 </div>
             </div>
-            <div id="actionLog" class="action-log">
-            </div>
+            <div id="actionLog" class="action-log"></div>
         </div>
     </main>
 
     <script src="script.js"></script>
-    <script src="particles.js"></script> 
+    <script src="particles.js"></script>
+</body>
 </html>

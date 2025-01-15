@@ -10,13 +10,13 @@ Dynamic Pricing: Price changes based on user actions.
 
 User-Friendly Interface: Easy-to-use interface for tracking budget, holdings, and market trends.
 
-Real-Time Updates: The chart updates every 2 seconds to show the latest price changes.
+Real-Time Updates: The chart updates every 5 seconds to show the latest price changes.
 
 Action Logs: Log of all trading activities to keep track of your actions.
 
 **Live Demo**
 
-Check out the live demo at xarom.j.pl.
+Check out the live demo at http://xarom.j.pl.
 
 **Contact**
 
