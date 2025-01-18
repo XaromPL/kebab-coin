@@ -1,0 +1,260 @@
+.content {
+    max-width: 1000px;
+    width: 90%;
+    margin: 50px auto;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #f5f5f5;
+    margin-bottom: 20px;
+}
+
+p:first-of-type {
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p:nth-of-type(2) {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+p, ul {
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: justify;
+    color: #bbb;
+}
+
+ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+li {
+    margin-bottom: 15px;
+}
+
+li strong {
+    color: #f5f5f5;
+}
+
+.content, .contact-section {
+    background: none;
+    box-shadow: none;
+}
+
+.contact-section {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.contact-section a {
+    color: #0288d1;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.contact-section a:hover {
+    color: #039be5;
+}
+
+.index-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+#button1 {
+    display: inline-block;
+    padding: 20px 40px;
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    background-color: #039be5;
+    border-radius: 50px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    animation: rotate-left-right 3s ease-in-out infinite;
+}
+
+#button1:hover {
+    background-color: #0288d1;
+    transform: scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+#button1:active {
+    transform: scale(0.95);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes rotate-left-right {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-5deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.arrow-container {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.arrow {
+    font-size: 40px;
+    color: white;
+    animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+footer {
+    text-align: center;
+    padding: 15px 0;
+    background: linear-gradient(to left, #303031, #455a64);
+    color: white;
+    font-size: 14px;
+    width: 100%;
+}
+
+#h1 {
+    text-align: center;
+    font-size: 48px;
+    color: white;
+    margin-top: 5rem;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeInMove 3s ease-out forwards, colorChange 5s ease-in-out infinite, rotateSway 6s ease-in-out infinite;
+}
+
+@keyframes fadeInMove {
+    0% {
+        transform: translateY(-30px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes colorChange {
+    0% {
+        color: #039be5;
+    }
+    50% {
+        color: #ff4081;
+    }
+    100% {
+        color: #039be5;
+    }
+}
+
+@keyframes rotateSway {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    50% {
+        transform: rotate(3deg);
+    }
+    75% {
+        transform: rotate(-3deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.contact-section p:nth-of-type(3) {
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+    .content {
+        width: 90%;
+        margin: 20px;
+        padding: 15px;
+    }
+
+    #button1 {
+        padding: 15px 30px;
+        font-size: 20px;
+    }
+
+    .index-main {
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    .arrow {
+        font-size: 30px;
+    }
+
+    footer {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #button1 {
+        font-size: 18px;
+        padding: 12px 25px;
+    }
+
+    .arrow {
+        font-size: 25px;
+    }
+
+    footer {
+        font-size: 10px;
+    }
+}

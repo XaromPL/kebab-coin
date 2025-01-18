@@ -1,20 +1,20 @@
 particlesJS("particles-js", {
     particles: {
         number: {
-            value: 100,  // Number of particles
+            value: 100,
             density: {
                 enable: true,
                 value_area: 800
             }
         },
         color: {
-            value: "#ffffff"  // Particle color (white stars)
+            value: "#ffffff"
         },
         shape: {
-            type: "circle"  // Particle shape
+            type: "circle"
         },
         opacity: {
-            value: 0.7,  // Opacity
+            value: 0.7,
             random: true,
             anim: {
                 enable: true,
@@ -24,7 +24,7 @@ particlesJS("particles-js", {
             }
         },
         size: {
-            value: 3,  // Particle size
+            value: 3,
             random: true,
             anim: {
                 enable: true,
@@ -34,12 +34,12 @@ particlesJS("particles-js", {
             }
         },
         line_linked: {
-            enable: false  
+            enable: false
         },
         move: {
             enable: true,
             speed: 1,
-            direction: "bottom",  
+            direction: "bottom",
             random: true,
             straight: false,
             out_mode: "out"

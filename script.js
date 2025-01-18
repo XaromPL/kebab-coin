@@ -11,6 +11,7 @@ let cryptoOwned = 0;
 let bigosOwned = 0;
 let pierogOwned = 0;
 let startTime = Date.now();
+const maxBudget = 25000;  
 
 // Initial chart setup 
 for (let i = 0; i < 20; i++) {
@@ -71,7 +72,7 @@ const cryptoChart = new Chart(ctx, {
 
 // Functions to change prices 
 function changePriceKebab() {
-    const randomChange = (Math.random() - 0.5) * 750;
+    const randomChange = (Math.random() - 0.5) * 1500;  
     currentPrice = Math.max(1000, currentPrice + randomChange);
     priceData.push(currentPrice);
 
@@ -87,7 +88,7 @@ function changePriceKebab() {
 }
 
 function changePriceBigos() {
-    const randomChange = (Math.random() - 0.5) * 250;
+    const randomChange = (Math.random() - 0.5) * 500;  
     bigosPrice = Math.max(1000, bigosPrice + randomChange);
     bigosData.push(bigosPrice);
 
@@ -103,7 +104,7 @@ function changePriceBigos() {
 }
 
 function changePricePierog() {
-    const randomChange = (Math.random() - 0.5) * 100;
+    const randomChange = (Math.random() - 0.5) * 200;  
     pierogPrice = Math.max(1000, pierogPrice + randomChange);
     pierogData.push(pierogPrice);
 
@@ -234,8 +235,28 @@ document.getElementById('sellBtn').addEventListener('click', () => {
 
 // Function to update the budget display
 function updateBudgetDisplay() {
+    if (budget > maxBudget) budget = maxBudget;  
     document.getElementById('budget').textContent = `Budget: $${budget.toFixed(2)} | Kebab-Coin: ${cryptoOwned.toFixed(2)} | Bigos-Coin: ${bigosOwned.toFixed(2)} | Pierog-Coin: ${pierogOwned.toFixed(2)}`;
 }
 
+//Mobile-warning
+window.addEventListener('load', function() {
+    if (window.innerWidth <= 768) {
+        document.getElementById('mobile-warning').style.display = 'block';
+    }
+});
+
 // Initialization
 updateBudgetDisplay();
+
+setInterval(() => {
+    if (budget + 2500 <= maxBudget) {
+        budget += 2500;
+        updateBudgetDisplay();
+        console.log("Payout received: $2500");
+    } else {
+        budget = maxBudget;
+        updateBudgetDisplay();
+        console.log("Budget capped at $25000");
+    }
+}, 30000);

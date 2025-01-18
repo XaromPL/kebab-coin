@@ -1,227 +1,289 @@
 body {
-    font-family: 'Roboto', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #1e1e1e;
-    color: #f5f5f5;
-    overflow: auto;
-    height: 100%;
+        font-family: 'Roboto', sans-serif;
+            margin: 0;
+                padding: 0;
+                    background-color: #1e1e1e;
+                        color: #f5f5f5;
+                            overflow: auto;
+                                height: 100%;
 }
 
 .navbar {
-    background: linear-gradient(to right, #303031, #455a64); 
-    color: #f5f5f5;
-    padding: 15px 0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    position: relative;
-    z-index: 2;
+        background: linear-gradient(to right, #303031, #455a64); 
+            color: #f5f5f5;
+                padding: 15px 0;
+                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+                        position: relative;
+                            z-index: 2;
 }
 
+
 .navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center; 
-    height: 100%;
+        list-style-type: none;
+            margin: 0;
+                padding: 0;
+                    display: flex;
+                        justify-content: center;
+                            align-items: center; 
+                                height: 100%;
 }
 
 .navbar ul li {
-    margin-right: 30px;
+        margin-right: 30px;
 }
 
 .navbar ul li a {
-    color: #f5f5f5;
-    text-decoration: none;
-    font-size: 18px;
-    padding: 15px 20px;
-    display: block;  
-    transition: background 0.3s ease, transform 0.3s ease;
-    border-radius: 5px;
-    height: 100%;
+        color: #f5f5f5;
+            text-decoration: none;
+                font-size: 18px;
+                    padding: 15px 20px;
+                        display: block;  
+                            transition: background 0.3s ease, transform 0.3s ease;
+                                border-radius: 5px;
+                                    height: 100%;
 }
 
 .navbar ul li a:hover {
-    background: linear-gradient(to right, #0288d1, #039be5);
-    color: white;
-    transform: scale(1.1);
+        background: linear-gradient(to right, #0288d1, #039be5);
+            color: white;
+                transform: scale(1.1);
 }
 
 main {
-    padding: 20px;
-    z-index: 3;
-    position: relative;
+        padding: 20px;
+            z-index: 3;
+                position: relative;
 }
 
 .chart-container {
-    text-align: center;
-    margin: 30px auto;
-    padding: 30px;
-    width: 70%;
-    background: #202020;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    border: 1px solid #666;
+        text-align: center;
+            margin: 30px auto;
+                padding: 30px;
+                    width: 70%;
+                        background: #202020;
+                            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+                                border-radius: 10px;
+                                    border: 1px solid #666;
 }
 
 .selection-container {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    gap: 15px;
+        display: flex;
+            align-items: center;
+                margin-top: 20px;
+                    gap: 15px;
 }
 
 .crypto-selection, .amount-input {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+        display: flex;
+            flex-direction: column;
+                text-align: left;
 }
 
 .crypto-selection label, .amount-input label {
-    font-size: 16px;
-    font-weight: bold;
+        font-size: 16px;
+            font-weight: bold;
 }
 
 .crypto-selection select, .amount-input input {
-    font-size: 16px;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #666;
-    background-color: #333;
-    color: #f5f5f5;
+        font-size: 16px;
+            padding: 8px;
+                border-radius: 5px;
+                    border: 1px solid #666;
+                        background-color: #333;
+                            color: #f5f5f5;
 }
 
 .buttons {
-    margin-left: auto; 
-    display: flex;
-    gap: 15px;
+        margin-left: auto; 
+            display: flex;
+                gap: 15px;
 }
 
 button {
-    background: linear-gradient(to right, #0288d1, #039be5);
-    color: white;
-    border: none;
-    padding: 16px 50px; 
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background 0.3s ease, transform 0.3s ease;
+        background: linear-gradient(to right, #0288d1, #039be5);
+            color: white;
+                border: none;
+                    padding: 16px 50px; 
+                        border-radius: 5px;
+                            cursor: pointer;
+                                font-size: 16px;
+                                    transition: background 0.3s ease, transform 0.3s ease;
 }
 
 button:hover {
-    background: linear-gradient(to right, #039be5, #0288d1);
-    transform: scale(1.05);
+        background: linear-gradient(to right, #039be5, #0288d1);
+            transform: scale(1.05);
 }
 
 footer {
-    text-align: center;
-    padding: 15px 0;
-    background-color: #607d8b;
-    color: white;
-    margin-top: 30px;
-    font-size: 14px;
+        text-align: center;
+            padding: 15px 0;
+                background: linear-gradient(to left, #303031, #455a64); 
+                    color: white;
+                        font-size: 14px;
+                            width: 100%; 
+                                position: relative; 
+                                    bottom: 0%;
 }
 
+
 .action-log {
-    background: #333;
-    border: 1px solid #444;
-    padding: 15px;
-    margin-top: 20px;
-    max-height: 150px;
-    overflow-y: auto;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    color: #bbb;
+        background: #333;
+            border: 1px solid #444;
+                padding: 15px;
+                    margin-top: 20px;
+                        max-height: 150px;
+                            overflow-y: auto;
+                                font-family: 'Roboto', sans-serif;
+                                    font-size: 14px;
+                                        color: #bbb;
 }
 
 .info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-top: 20px;
+        display: flex;
+            flex-direction: column;
+                align-items: flex-start;
+                    margin-top: 20px;
 }
 
 .info p {
-    font-size: 18px;
-    font-weight: bold;
-    margin: 0;
-    margin-bottom: 10px;
+        font-size: 18px;
+            font-weight: bold;
+                margin: 0;
+                    margin-bottom: 10px;
 }
 
 #particles-js {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    pointer-events: none;
+        position: fixed;
+            top: 0;
+                left: 0;
+                    width: 100%;
+                        height: 100%;
+                            z-index: 1;
+                                pointer-events: none;
 }
 
 @media (max-width: 768px) {
-    .navbar ul {
-        flex-direction: column;
-    }
+        .navbar ul {
+                    flex-direction: column;
+        }
 
-    .navbar ul li {
-        margin-bottom: 15px;
-    }
+            .navbar ul li {
+                        margin-bottom: 15px;
+            }
 
-    .navbar ul li a {
-        font-size: 16px;
-        padding: 10px 15px;
-    }
+                .navbar ul li a {
+                            font-size: 16px;
+                                    padding: 10px 15px;
+                }
 
-    .chart-container {
-        width: 90%;
-        padding: 20px;
-    }
+                    .chart-container {
+                                width: 90%;
+                                        padding: 20px;
+                    }
 
-    .info {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+                        .info {
+                                    flex-direction: column;
+                                            align-items: flex-start;
+                        }
 
-    .info p {
-        font-size: 16px;
-    }
+                            .info p {
+                                        font-size: 16px;
+                            }
 
-    button {
-        font-size: 14px;
-        padding: 10px 20px;
-    }
+                                button {
+                                            font-size: 14px;
+                                                    padding: 10px 20px;
+                                }
 
-    footer {
-        font-size: 12px;
-    }
+                                    footer {
+                                                font-size: 12px;
+                                    }
+                                }
+
+                                @media (max-width: 480px) {
+                                        .navbar ul li {
+                                                    margin-right: 10px;
+                                        }
+
+                                            .navbar ul li a {
+                                                        font-size: 14px;
+                                                                padding: 8px 12px;
+                                            }
+
+                                                .chart-container {
+                                                            width: 95%;
+                                                                    padding: 15px;
+                                                }
+
+                                                    .info p {
+                                                                font-size: 14px;
+                                                    }
+
+                                                        button {
+                                                                    font-size: 12px;
+                                                                            padding: 8px 15px;
+                                                        }
+
+                                                            footer {
+                                                                        font-size: 10px;
+                                                            }
+                                                        }
+
+                                                        .mobile-warning {
+                                                                position: fixed;
+                                                                    top: 0;
+                                                                        left: 0;
+                                                                            width: 100%;
+                                                                                background-color: rgba(0, 0, 0, 0.8);
+                                                                                    color: white;
+                                                                                        padding: 15px;
+                                                                                            text-align: center;
+                                                                                                font-size: 18px;
+                                                                                                    z-index: 1000;
+                                                                                                        display: none;
+                                                        }
+
+                                                        @media (max-width: 768px) {
+                                                                #mobile-warning {
+                                                                            display: block;
+                                                                                
+                                                                }
+                                                        }
+                                                        }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
 }
-
-@media (max-width: 480px) {
-    .navbar ul li {
-        margin-right: 10px;
-    }
-
-    .navbar ul li a {
-        font-size: 14px;
-        padding: 8px 12px;
-    }
-
-    .chart-container {
-        width: 95%;
-        padding: 15px;
-    }
-
-    .info p {
-        font-size: 14px;
-    }
-
-    button {
-        font-size: 12px;
-        padding: 8px 15px;
-    }
-
-    footer {
-        font-size: 10px;
-    }
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
 }
